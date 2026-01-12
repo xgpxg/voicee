@@ -28,14 +28,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="title-bar">
+  <div class="title-bar" data-tauri-drag-region>
     <div class="drag-region" data-tauri-drag-region>
-      <div class="fill-width flex" data-tauri-drag-region>
-        <div class="avatar" data-tauri-drag-region>
-          <svg-icon icon-class="audio" size="20" class="mr5"></svg-icon>
-          Voicee
-        </div>
-        <div class="menu fill-width" data-tauri-drag-region>
+      <div class="flex-space-between fill-width " data-tauri-drag-region>
+        <div class=" flex" data-tauri-drag-region>
+          <div class="avatar" data-tauri-drag-region>
+            <svg-icon icon-class="audio" size="20" class="mr5"></svg-icon>
+            Voicee
+          </div>
+          <div class="menu" data-tauri-drag-region>
+          </div>
         </div>
       </div>
 
@@ -50,7 +52,6 @@ onMounted(() => {
       </svg-icon>
     </div>
   </div>
-  <user-settings ref="userSettingsRef"></user-settings>
 </template>
 
 <style scoped lang="scss">
@@ -88,7 +89,7 @@ onMounted(() => {
 
   .avatar {
     display: flex;
-    align-items: center; /* 垂直居中 */
+    align-items: center;
     height: 40px;
     padding: 0 20px;
     width: 200px;
@@ -98,6 +99,9 @@ onMounted(() => {
   .menu {
     display: flex;
     align-items: center;
+    color: #ffffff;
+    height: 40px;
+    padding: 0 20px;
 
     .main-menu {
       margin-left: 200px;

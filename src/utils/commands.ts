@@ -7,14 +7,16 @@ const isDev = () => {
     return IS_DEV === 1 || IS_DEV === '1'
 }
 
-const call = async (command: string, args: any) => {
+const call = async (command: string, args: any, options?: { hideError?: boolean }) => {
     try {
         if (isDev()) {
             console.log(command, args)
         }
         return await invoke(command, args)
-    } catch (e: Error) {
-        ElMessage.error(e.message || e)
+    } catch (e: any) {
+        if (!options?.hideError) {
+            ElMessage.error(e.message || e)
+        }
         throw e
     }
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import {nextTick, provide, ref} from "vue";
+import {nextTick, onMounted, provide, ref} from "vue";
 import {invoke} from "@tauri-apps/api/core";
+import {call} from "./utils/commands.ts";
 
 const greetMsg = ref("");
 const name = ref("");
@@ -20,6 +21,13 @@ const reload = () => {
 
 provide("reload", reload)
 
+const init = async () => {
+  await call('gen_unique_id', {})
+}
+
+onMounted(async () => {
+  await init()
+})
 </script>
 
 <template>

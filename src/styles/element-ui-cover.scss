@@ -13,7 +13,7 @@
 
 
 .el-overlay {
-  // background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
   overflow-y: hidden;
 }
 
@@ -71,7 +71,7 @@
   }
 
   .el-dialog__body {
-    padding: 10px 20px;
+    padding: 0;
   }
 
   .el-main {
@@ -242,7 +242,6 @@
       box-shadow: 0 -16px 16px rgba(0, 0, 0, 0.1);
       border-radius: 20px 20px 0 0;
     }
-
 
 
     .el-drawer__body {

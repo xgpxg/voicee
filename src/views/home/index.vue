@@ -5,6 +5,8 @@ import {computed, ref} from "vue";
 import {openPath} from "@tauri-apps/plugin-opener";
 import {sep} from '@tauri-apps/api/path';
 import SvgIcon from "../../components/SvgIcon/index.vue";
+import Activate from "../../layout/components/Activate.vue";
+import {ElMessage} from "element-plus";
 
 
 const openFileDialog = async () => {
@@ -38,6 +40,9 @@ const input = ref<{
 const output = ref<string>('')
 
 const loading = ref(false)
+
+const verifyRef = ref()
+
 const voice_clone = () => {
   loading.value = true
   call('voice_clone', {
@@ -46,18 +51,28 @@ const voice_clone = () => {
       voice_text: input.value.voice_text,
       input: input.value.input.replace(/\n/g, ' ')
     }
-  }).then((save_file: string) => {
+  }, {hideError: true}).then((save_file: string) => {
     output.value = save_file
     loading.value = false
+  }).catch((error: any) => {
+    loading.value = false
+    if (error.includes('未激活')) {
+      verifyRef.value.show()
+    } else {
+      ElMessage.error(error)
+    }
   })
 }
 
 const disable = computed(() => {
   return !input.value.voice_file || !input.value.voice_text || !input.value.input
 })
+
+
 </script>
 
 <template>
+  <Activate ref="verifyRef"></Activate>
   <div class="pd10">
     <div class="flex">
       <div class="import-area" @click="openFileDialog">
@@ -73,11 +88,12 @@ const disable = computed(() => {
     </div>
 
     <div class="mt10">
-      <el-input v-model="input.voice_text" placeholder="请输入原始音色对应的文本" class="voice-text"></el-input>
+      <el-input v-model="input.voice_text" placeholder="请输入上方原始音色对应的文本" class="voice-text"></el-input>
     </div>
 
     <div class="mt10">
-      <el-input v-model="input.input" type="textarea" rows="10" placeholder="请输入要克隆的文本内容"
+      <el-input v-model="input.input" type="textarea" rows="10"
+                placeholder="请输入要克隆的文本内容，无字数限制，克隆速度取决于您的设备性能。"
                 class="input-text"></el-input>
     </div>
     <div class="mt10 flex-space-between">
@@ -89,8 +105,8 @@ const disable = computed(() => {
       </el-button>
       <span v-else> </span>
       <el-button @click="voice_clone" :loading="loading" :disabled="disable" type="primary">
-        <svg-icon icon-class="voice-clone" size="16" class="mr5"></svg-icon>
         <template v-if="!loading">
+          <svg-icon icon-class="voice-clone" size="16" class="mr5"></svg-icon>
           开始克隆
         </template>
         <template v-else>
