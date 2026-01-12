@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory, createWebHashHistory} from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import Layout from '@/layout/index.vue'
 
 const routes = [
@@ -31,6 +31,7 @@ const router = createRouter({
 })
 
 // 全局路由守卫
+// @ts-ignore
 router.beforeEach((to, from, next) => {
     // console.log(to, from)
     if (to.meta.title) {

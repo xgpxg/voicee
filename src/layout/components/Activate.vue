@@ -11,7 +11,7 @@ const form = ref({
 })
 
 const get_unique_id = async () => {
-  id["value"] = await call('get_unique_id', {})
+  id.value = (await call('get_unique_id', {})) as string
 }
 
 onMounted(async () => {

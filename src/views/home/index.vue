@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {open} from '@tauri-apps/plugin-dialog'
-import {call} from "@/utils/commands.ts";
+import {call} from "../../utils/commands.ts";
 import {computed, ref} from "vue";
 import {openPath} from "@tauri-apps/plugin-opener";
 import {sep} from '@tauri-apps/api/path';
@@ -51,7 +51,7 @@ const voice_clone = () => {
       voice_text: input.value.voice_text,
       input: input.value.input.replace(/\n/g, ' ')
     }
-  }, {hideError: true}).then((save_file: string) => {
+  }, {hideError: true}).then((save_file: any) => {
     output.value = save_file
     loading.value = false
   }).catch((error: any) => {
