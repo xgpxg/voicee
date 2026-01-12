@@ -1,0 +1,260 @@
+/*.el-button:hover {
+  background: #f8f8f8;
+  color: #000000;
+  border-color: #b4b2b2;
+}*/
+
+/*.el-button:focus {
+  outline: none;
+  color: #000000;
+  background: #f8f8f8;
+  border-color: #b4b2b2;
+}*/
+
+
+.el-overlay {
+  // background-color: rgba(0, 0, 0, 0);
+  overflow-y: hidden;
+}
+
+.el-drawer {
+  box-shadow: var(--el-box-shadow);
+}
+
+.el-input__wrapper.is-focus {
+  //box-shadow: rgba(67, 71, 85, 0.27) 0 0 0.15em, rgba(90, 125, 188, 0.05) 0 0.15em 0.5em;
+}
+
+/*
+.el-input__wrapper {
+}*/
+.el-input__wrapper {
+  border-radius: 5px;
+}
+
+.el-link:hover {
+  color: #2a67d9;
+}
+
+.el-dialog {
+  box-shadow: var(--el-box-shadow-light);
+}
+
+.el-select .el-input.is-focus .el-input__wrapper {
+  //box-shadow: inset 0px 0px 1px 1px #cecece !important;
+}
+
+.el-card {
+  border-radius: 5px;
+  border: unset !important;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+}
+
+:root {
+  --el-color-primary: #1976D2; // 蓝色主色（Material Design 蓝）
+  --el-color-primary-light-3: #42A5F5; // 浅蓝
+  --el-color-primary-light-5: #64B5F6; // 中浅蓝
+  --el-color-primary-light-7: #90CAF9; // 更浅蓝
+  --el-color-primary-light-8: #BBDEFB; // 极浅蓝
+  --el-color-primary-light-9: #E3F2FD; // 淡蓝
+  --el-color-primary-light-10: #EBF4FF; // 微淡蓝
+  --el-color-primary-light-11: #F0F7FF; // 极淡蓝
+  --el-color-primary-light-12: #F8FBFF; // 几乎白色
+  --el-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  .el-page-header__main {
+    border-top: unset !important;
+  }
+
+  .el-card.is-always-shadow {
+    box-shadow: var(--el-box-shadow-lighter);
+  }
+
+  .el-dialog__body {
+    padding: 10px 20px;
+  }
+
+  .el-main {
+    --el-main-padding: 0
+  }
+
+  .el-message {
+    //margin-top: 50px;
+    @media screen and (max-width: 500px) {
+      min-width: 200px !important;
+      display: flex;
+    }
+  }
+
+  .el-notification {
+    margin-top: 50px;
+  }
+
+  /*  .el-drawer {
+      top: 60px;
+      padding-bottom: 60px;
+    }*/
+
+  .el-tabs {
+    .el-tabs__header {
+      .el-tabs__nav-wrap {
+        .el-tabs__nav-scroll {
+          .el-tabs__nav {
+            z-index: calc(var(--el-index-normal) - 1);
+
+            .el-tabs__active-bar {
+              display: none;
+            }
+
+            .el-tabs__item {
+              padding: 10px;
+              text-align: center;
+              line-height: 20px;
+              font-size: 14px;
+            }
+
+            .el-tabs__item.is-active {
+              color: var(--el-color-primary);
+              font-weight: 600;
+              //font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    .el-tabs__nav-wrap::after {
+      display: none;
+    }
+  }
+
+  .el-link {
+    color: #5a4bd3
+  }
+
+
+  .tableStyle::before {
+    width: 0;
+  }
+
+  .el-table {
+    border: 1px solid #ececec;
+    //border: none;
+    font-size: 14px;
+    color: #666;
+    width: 100%;
+    border-radius: 10px;
+
+    &:before {
+      display: none;
+    }
+
+    .el-table__inner-wrapper {
+      border-radius: 10px;
+    }
+
+    th {
+      background: #f8f8f8;
+      color: #333;
+      border-bottom: 1px solid #e8e8e8;
+      padding: 12px 16px;
+      font-weight: 500;
+    }
+
+    td {
+      border-bottom: 1px solid #f2f2f2;
+      padding: 16px 16px;
+      word-break: break-all;
+      color: #1C1C1E;
+
+      &:last-child {
+        borrder-radius: 0 0 0 10px;
+      }
+    }
+
+    &.el-table--enable-row-hover .el-table__body tr:hover > td {
+      background: #f5f5f5;
+      cursor: default;
+    }
+  }
+
+
+  .el-popper {
+    border-radius: 5px;
+  }
+
+  .el-textarea {
+    .el-textarea__inner {
+      //box-shadow: rgba(129, 130, 136, 0.27) 0 0 0.15em, rgba(186, 190, 197, 0.05) 0 0.15em 0.5em;
+      border: unset;
+      background: #ffffff;
+
+      &:focus {
+        //box-shadow: rgba(131, 15, 134, 0.27) 0 0 0.15em, rgba(161, 15, 176, 0.05) 0 0.25em 0.5em;
+      }
+    }
+  }
+
+  .el-text {
+    &.compact {
+      line-height: 16px;
+    }
+  }
+
+  .el-dialog {
+  }
+
+  .el-message-box {
+    border-radius: 6px;
+    padding: 20px;
+  }
+
+  /* 强制覆盖特定组件字体 */
+  .el-button,
+  .el-input,
+  .el-select,
+  .el-menu,
+  .el-table,
+  .el-dialog,
+  .el-message,
+  .el-popover,
+  .el-pagination,
+  .el-radio,
+  .el-checkbox,
+  .el-switch,
+  .el-collapse-item__header {
+    font-family: var(--el-font-family) !important;
+  }
+
+
+  /* 针对输入框内部文字 */
+  .el-input__inner,
+  .el-textarea__inner {
+    font-family: var(--el-font-family), serif !important;
+  }
+
+
+  .el-drawer-modal {
+    margin-bottom: -60px;
+    z-index: 10000000;
+
+    .el-drawer {
+      box-shadow: 0 -16px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 20px 20px 0 0;
+    }
+
+
+
+    .el-drawer__body {
+      padding: 10px 10px;
+    }
+  }
+}
+
+.user-info-dialog {
+  border-radius: 20px;
+}
+
+.el-drawer__header {
+  margin: 0;
+}
