@@ -17,7 +17,7 @@ const VERIFY_VERSION: &'static str = "v1";
 
 fn get_app_dir() -> Result<PathBuf, String> {
     let home_dir = std::env::home_dir().ok_or("no home dir")?;
-    let app_dir = home_dir.join(".voice-app");
+    let app_dir = home_dir.join(".voicee");
     if !app_dir.exists() {
         fs::create_dir_all(&app_dir).unwrap();
     }
@@ -133,7 +133,7 @@ pub(crate) fn verify(app_handle: AppHandle) -> Result<(), String> {
     if !verify_file.exists() && !verify_file_back.exists() {
         // 文件不存在，创建新的验证数据
         let now = chrono::Local::now().timestamp();
-        let exp_ts = now + 30; //86400 * 30; // 30天后过期
+        let exp_ts = now + 86400 * 3; // 3天后过期
 
         let id = get_unique_id(app_handle)?;
         // 格式：<VERIFY_VERSION>;<ID>;<EXP_TS>
