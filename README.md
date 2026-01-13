@@ -1,6 +1,16 @@
+<div align="center">
+
+![Release](https://github.com/xgpxg/voicee/actions/workflows/publish.yml/badge.svg)
+![GitHub release](https://img.shields.io/github/v/release/xgpxg/voicee?label=Version)
+![License](https://img.shields.io/github/license/xgpxg/voicee)
+
+</div>
+
 # Voicee
 
-音色克隆工具，本地化运行。模型使用`voxcpm`，[aha](https://github.com/jhqxxx/aha)推理库实现。
+音色克隆工具。
+
+模型使用`voxcpm`，[aha](https://github.com/jhqxxx/aha)推理库实现。
 
 客户端基于Tauri开发。
 
