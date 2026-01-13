@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {call} from "../../utils/commands.ts";
+import {call} from "@/utils/commands";
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import SvgIcon from "../../components/SvgIcon/index.vue";
@@ -16,16 +16,16 @@ const router = useRouter()
  */
 const init_status = ref(-1)
 const check_initialized = () => {
-  call('is_initialized', {}).then(res => {
+  call<boolean>('is_initialized', {}).then((res: boolean) => {
     init_status.value = res ? 1 : 0
 
     if (res) {
       router.replace('/home')
     } else {
       init_status.value = 2
-      call('download_model', {}).then(() => {
+      call<void>('download_model', {}).then(() => {
         init_status.value = 3
-        call('load_model', {}).then(() => {
+        call<void>('load_model', {}).then(() => {
           init_status.value = 1
           setTimeout(() => {
             router.replace('/home')
@@ -33,7 +33,7 @@ const check_initialized = () => {
         })
       })
     }
-  }).catch(error => {
+  }).catch((error: any) => {
     console.error("初始化检查失败:", error);
     init_status.value = 0;
   })

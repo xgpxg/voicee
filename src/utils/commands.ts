@@ -7,7 +7,7 @@ const isDev = () => {
     return IS_DEV === 1 || IS_DEV === '1'
 }
 
-const call = async (command: string, args: any, options?: { hideError?: boolean }) => {
+const call = async <T = any>(command: string, args: any, options?: { hideError?: boolean }): Promise<T> => {
     try {
         if (isDev()) {
             console.log(command, args)

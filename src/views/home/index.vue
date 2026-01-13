@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import {open} from '@tauri-apps/plugin-dialog'
-import {call} from "../../utils/commands.ts";
+import {call} from "@/utils/commands";
 import {computed, ref} from "vue";
 import {openPath} from "@tauri-apps/plugin-opener";
 import {sep} from '@tauri-apps/api/path';
 import SvgIcon from "../../components/SvgIcon/index.vue";
-import Activate from "../../layout/components/Activate.vue";
 import {ElMessage} from "element-plus";
 
 
@@ -45,7 +44,7 @@ const verifyRef = ref()
 
 const voice_clone = () => {
   loading.value = true
-  call('voice_clone', {
+  call<{ save_file: string }>('voice_clone', {
     input: {
       voice_file: input.value.voice_file,
       voice_text: input.value.voice_text,
@@ -72,7 +71,6 @@ const disable = computed(() => {
 </script>
 
 <template>
-  <Activate ref="verifyRef"></Activate>
   <div class="pd10">
     <div class="flex">
       <div class="import-area" @click="openFileDialog">
@@ -82,18 +80,15 @@ const disable = computed(() => {
           {{ input.voice_file?.substring(input.voice_file.lastIndexOf(sep()) + 1) }}
         </el-text>
       </div>
-      <!--      <div>
-              <div class="record" @click="startListen">录音</div>
-            </div>-->
     </div>
 
     <div class="mt10">
-      <el-input v-model="input.voice_text" placeholder="请输入上方原始音色对应的文本" class="voice-text"></el-input>
+      <el-input v-model="input.voice_text" placeholder="请输入音色对应的文本" class="voice-text"></el-input>
     </div>
 
     <div class="mt10">
       <el-input v-model="input.input" type="textarea" rows="10"
-                placeholder="请输入要克隆的文本内容，无字数限制，克隆速度取决于您的设备性能。"
+                placeholder="请输入要克隆的文本"
                 class="input-text"></el-input>
     </div>
     <div class="mt10 flex-space-between">

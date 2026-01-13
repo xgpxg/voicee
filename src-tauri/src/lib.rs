@@ -1,5 +1,4 @@
 mod commands;
-mod utils;
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
@@ -14,10 +13,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .invoke_handler(tauri::generate_handler![
             greet,
-            commands::gen_unique_id,
-            commands::get_unique_id,
             commands::is_initialized,
-            commands::update_verify_code,
             commands::download_model,
             commands::load_model,
             commands::voice_clone

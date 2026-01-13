@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import {nextTick, onMounted, provide, ref} from "vue";
-import {call} from "./utils/commands.ts";
+import {nextTick, provide, ref} from "vue";
 
-const isRouteAlive = ref(true);
+const isRouteAlive = ref<boolean>(true);
 const reload = () => {
   isRouteAlive.value = false
   nextTick(() => {
@@ -12,13 +11,6 @@ const reload = () => {
 
 provide("reload", reload)
 
-const init = async () => {
-  await call('gen_unique_id', {})
-}
-
-onMounted(async () => {
-  await init()
-})
 </script>
 
 <template>
