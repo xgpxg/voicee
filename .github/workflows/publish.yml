@@ -46,10 +46,10 @@ jobs:
       # 安装 CUDA
       - name: Install CUDA
         if: matrix.os == 'ubuntu-22.04' || matrix.os == 'windows-latest'
-        uses: Jimver/cuda-toolkit@v0.2.9
+        uses: Jimver/cuda-toolkit@v0.2.29
         id: cuda-toolkit
         with:
-          cuda: '12.1.0'
+          cuda: '12.5.0'
 
       # 安装前端依赖
       - name: Install frontend dependencies
