@@ -15,15 +15,15 @@ jobs:
           - os: ubuntu-22.04
             target: x86_64-unknown-linux-gnu
             asset: deb/Voicee_${{ github.ref_name }}_amd64.deb
-            features: '--features=cuda'
+            features: '-- --features cuda'
           - os: macos-latest
             target: aarch64-apple-darwin
             asset: dmg/Voicee_${{ github.ref_name }}_aarch64.dmg
-            features: '--features=metal'
+            features: '-- --features metal'
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             asset: msi/Voicee_${{ github.ref_name }}_x64_en-US.msi
-            features: '--features=cuda'
+            features: '-- --features cuda'
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
