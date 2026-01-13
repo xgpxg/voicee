@@ -58,7 +58,7 @@ jobs:
         run: sed -i '' "s/^VITE_VERSION=.*/VITE_VERSION=${{ github.ref_name }}/" .env.production
 
       # 构建
-      - name: Build frontend
+      - name: Build App
         run: npm run tauri build ${{ matrix.features }}
 
       # 创建 Release
@@ -68,6 +68,6 @@ jobs:
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           files: |
-            src-tauri/target/${{ matrix.target }}/release/bundle/${{ matrix.asset }}
+            src-tauri/target/release/bundle/${{ matrix.asset }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
