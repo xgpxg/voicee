@@ -1,7 +1,27 @@
-# Tauri + Vue + TypeScript
+# Voicee
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+音色克隆工具，本地化运行。
 
-## Recommended IDE Setup
+支持的系统：
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+- Windows ✅
+- MacOS ✅
+- Ubuntu ⚠️
+
+支持CPU和英伟达的GPU。
+
+
+> ⚠️：理论上支持，但未测试。
+
+# 截图
+![home.png](docs/images/home.png)
+
+- 原始音频：
+<audio controls>
+  <source src="docs/audio/哪吒.wav" type="audio/wav">
+</audio>
+
+- 生成结果：
+<audio controls>
+  <source src="docs/audio/克隆.wav" type="audio/wav">
+</audio>
