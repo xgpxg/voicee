@@ -16,12 +16,6 @@
 # 截图
 ![home.png](docs/images/home.png)
 
-- 原始音频：
-<audio controls>
-  <source src="docs/audio/哪吒.wav" type="audio/wav">
-</audio>
+- 原始音频：[哪吒](https://github.com/xgpxg/voicee/blob/master/docs/audio/%E5%93%AA%E5%90%92.wav)
 
-- 生成结果：
-<audio controls>
-  <source src="docs/audio/克隆.wav" type="audio/wav">
-</audio>
+- 生成结果：[输出](https://github.com/xgpxg/voicee/blob/master/docs/audio/%E5%85%8B%E9%9A%86.wav)
