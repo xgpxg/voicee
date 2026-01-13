@@ -42,6 +42,8 @@ const check_initialized = () => {
 onMounted(() => {
   check_initialized()
 })
+
+const VERSION = import.meta.env.VITE_VERSION
 </script>
 
 <template>
@@ -99,7 +101,7 @@ onMounted(() => {
   </div>
 
   <div class="app-container">
-    <div class="version-info">v0.1.0</div>
+    <div class="version-info">v{{ VERSION}}</div>
   </div>
 </template>
 
