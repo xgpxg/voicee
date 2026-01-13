@@ -43,6 +43,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libsoup-3.0-dev libjavascriptcoregtk-4.1-dev build-essential curl wget file libssl-dev libxdo-dev
 
+      # 安装 CUDA
+      - name: Install CUDA
+        if: matrix.os == 'ubuntu-22.04' || matrix.os == 'windows-latest'
+        uses: Jimver/cuda-toolkit@v0.2.30
+        id: cuda-toolkit
+        with:
+          cuda: '12.6.20'
+
       # 安装前端依赖
       - name: Install frontend dependencies
         run: npm ci
