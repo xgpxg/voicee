@@ -68,6 +68,6 @@ jobs:
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           files: |
-            target/${{ matrix.target }}/release/${{ matrix.asset }}
+            src-tauri/target/${{ matrix.target }}/release/${{ matrix.asset }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
