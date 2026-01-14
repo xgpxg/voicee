@@ -13,14 +13,18 @@ jobs:
       matrix:
         include:
           - os: ubuntu-22.04
-            target: x86_64-unknown-linux-gnu
+            #target: x86_64-unknown-linux-gnu
             asset: deb/Voicee_${{ github.ref_name }}_amd64.deb
           - os: macos-latest
-            target: aarch64-apple-darwin
+            #target: aarch64-apple-darwin
             asset: dmg/Voicee_${{ github.ref_name }}_aarch64.dmg
           - os: windows-latest
-            target: x86_64-pc-windows-msvc
+            #target: x86_64-pc-windows-msvc
             asset: msi/Voicee_${{ github.ref_name }}_x64_en-US.msi
+          - os: [ self-hosted, cuda12.6 ]
+            #target: x86_64-pc-windows-msvc
+            asset: msi/Voicee_${{ github.ref_name }}_x64_en-US-cuda12.6.msi
+            name: windows-cuda12.6
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -57,6 +61,12 @@ jobs:
       # 构建
       - name: Build App
         run: npm run tauri build ${{ matrix.features }}
+
+      # 重命名
+      - name: Rename Windows App When Using CUDA
+        if: matrix.name == 'windows-cuda12.6'
+        run: |
+          move src-tauri/target/release/bundle/msi/Voicee_${{ github.ref_name }}_x64_en-US.msi src-tauri/target/release/bundle/msi/Voicee_${{ github.ref_name }}_x64_en-US-cuda12.6.msi
 
       # 创建 Release
       - name: Create Release
