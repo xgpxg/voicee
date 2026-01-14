@@ -49,12 +49,17 @@ jobs:
         run: npm ci
 
       # 设置前端版本号
-      - name: Set frontend version
-        if: matrix.os != 'macos-latest'
+      - name: Set frontend version for  Ubuntu
+        if: matrix.os == 'ubuntu-22.04'
         run: sed -i "s/^VITE_VERSION=.*/VITE_VERSION=${{ github.ref_name }}/" .env.production
 
       # 设置前端版本号
-      - name: Set frontend version
+      - name: Set frontend version for  Windows
+        if: matrix.os == 'windows-latest'
+        run: (Get-Content .env.production) -replace '^VITE_VERSION=.*', 'VITE_VERSION=${{ github.ref_name }}' | Set-Content .env.production
+
+        # 设置前端版本号
+      - name: Set frontend version for macOS
         if: matrix.os == 'macos-latest'
         run: sed -i '' "s/^VITE_VERSION=.*/VITE_VERSION=${{ github.ref_name }}/" .env.production
 
