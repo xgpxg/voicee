@@ -56,7 +56,7 @@ jobs:
 
       # 设置前端版本号
       - name: Set frontend version for  Windows
-        if: matrix.os == 'windows-latest' || matrix.name == 'windows-cuda12.6
+        if: matrix.os == 'windows-latest' || matrix.name == 'windows-cuda12.6'
         run: (Get-Content .env.production) -replace '^VITE_VERSION=.*', 'VITE_VERSION=${{ github.ref_name }}' | Set-Content .env.production
 
         # 设置前端版本号
