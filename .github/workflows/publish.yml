@@ -13,18 +13,18 @@ jobs:
       matrix:
         include:
           - os: ubuntu-22.04
-            #target: x86_64-unknown-linux-gnu
             asset: deb/Voicee_${{ github.ref_name }}_amd64.deb
           - os: macos-latest
-            #target: aarch64-apple-darwin
             asset: dmg/Voicee_${{ github.ref_name }}_aarch64.dmg
           - os: windows-latest
-            #target: x86_64-pc-windows-msvc
             asset: msi/Voicee_${{ github.ref_name }}_x64_en-US.msi
-          - os: [ self-hosted, cuda12.6 ]
-            #target: x86_64-pc-windows-msvc
+          - os: [ self-hosted, cuda12.6, Windows ]
             asset: msi/Voicee_${{ github.ref_name }}_x64_en-US-cuda12.6.msi
             name: windows-cuda12.6
+            features: "-- --features cuda"
+          - os: [ self-hosted, cuda12.6, Ubuntu ]
+            asset: deb/Voicee_${{ github.ref_name }}_amd64-cuda12.6.deb
+            name: ubuntu-cuda12.6
             features: "-- --features cuda"
     runs-on: ${{ matrix.os }}
     steps:
@@ -73,6 +73,12 @@ jobs:
         if: matrix.name == 'windows-cuda12.6'
         run: |
           move src-tauri/target/release/bundle/msi/Voicee_${{ github.ref_name }}_x64_en-US.msi src-tauri/target/release/bundle/msi/Voicee_${{ github.ref_name }}_x64_en-US-cuda12.6.msi
+
+      # 重命名
+      - name: Rename Ubuntu App When Using CUDA
+        if: matrix.name == 'ubuntu-cuda12.6'
+        run: |
+          mv src-tauri/target/release/bundle/deb/Voicee_${{ github.ref_name }}_amd64.deb src-tauri/target/release/bundle/deb/Voicee_${{ github.ref_name }}_amd64-cuda12.6.deb
 
       # 创建 Release
       - name: Create Release
