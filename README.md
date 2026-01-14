@@ -24,7 +24,13 @@
 
 > ⚠️：理论上支持，但未测试。
 
-# 本地运行
+# 安装
+
+前往 [发布页面](https://github.com/xgpxg/voicee/releases) 下载对应版本安装即可。
+
+发布版使用CUDA12.6编译，如果和你的版本不匹配，可参考下方自行编译。
+
+# 编译
 
 ```shell
 # 克隆仓库
@@ -34,11 +40,14 @@ cd voicee
 # 安装依赖
 npm install
 
-# 启动开发模式
+# 开发模式启动
 npm run tauri dev
 
 # 打包应用
 npm run tauri build
+
+# 启用CUDA(可选)
+npm run tauri build -- --features cuda
 ```
 
 > Node >= 20
