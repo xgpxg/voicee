@@ -25,6 +25,7 @@ jobs:
             #target: x86_64-pc-windows-msvc
             asset: msi/Voicee_${{ github.ref_name }}_x64_en-US-cuda12.6.msi
             name: windows-cuda12.6
+            features: "-- --features cuda"
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -55,7 +56,7 @@ jobs:
 
       # 设置前端版本号
       - name: Set frontend version for  Windows
-        if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows-latest' || matrix.name == 'windows-cuda12.6
         run: (Get-Content .env.production) -replace '^VITE_VERSION=.*', 'VITE_VERSION=${{ github.ref_name }}' | Set-Content .env.production
 
         # 设置前端版本号
@@ -65,7 +66,7 @@ jobs:
 
       # 构建
       - name: Build App
-        run: npm run tauri build ${{ matrix.features }}
+        run: npm run tauri build ${{ matrix.features }} ${{ matrix.features }}
 
       # 重命名
       - name: Rename Windows App When Using CUDA
